@@ -1,0 +1,210 @@
+---
+import { Image } from "astro:assets";
+
+const links = [
+  {
+    title: "Home",
+    href: "",
+  },
+  {
+    title: "Chi siamo",
+    href: "chi-siamo",
+  },
+  {
+    title: "Servizi",
+    href: "servizi",
+  },
+];
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+---
+
+<header
+  class="sticky top-0 z-50 transition-colors ease-in-out duration-500 border-b border-transparent"
+>
+  <div class="container">
+    <nav class="flex items-center justify-between p-2" aria-label="Global">
+      <div class="flex">
+        <a href="/" class="-m-1.5 p-1.5">
+          <span class="sr-only">Riviera Skatepark</span>
+          <h1 class="font-bold tracking-widest uppercase">Riviera Skatepark</h1>
+<!-- 
+          <Image
+            loading="eager"
+            width={120}
+            height={120}
+            src="/images/nbs_logo.png"
+            class="max-w-12"
+            alt=""
+          /> -->
+        </a>
+      </div>
+      <!-- Solo Mobile -->
+      <div class="flex lg:hidden">
+        <button
+          data-click="open-mobile-menu"
+          type="button"
+          class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+          </svg>
+        </button>
+      </div>
+      <!-- Fine Solo Mobile -->
+
+      <div class="hidden lg:flex lg:gap-x-12">
+        {
+          links.map(({ title, href }) => (
+            <a
+              class:list={["nav-link desktop", { active: currentPath == href }]}
+              href={"/" + href}
+            >
+              {title}
+            </a>
+          ))
+        }
+      </div>
+    </nav>
+    <!-- Solo Mobile -->
+    <div
+      data-element="mobile-menu"
+      class="hidden"
+      role="dialog"
+      aria-modal="true"
+    >
+      <!-- Background backdrop, show/hide based on slide-over state. -->
+      <div class="fixed inset-0 z-50"></div>
+
+      <div
+        class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-2 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+      >
+        <div class="flex items-center justify-between">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">NBS s.r.l.</span>
+            <img src="/images/nbs_logo.png" class="max-w-16" alt="" />
+          </a>
+
+          <button
+            data-click="close-mobile-menu"
+            type="button"
+            class="-m-2.5 rounded-md p-2.5 text-gray-700"
+          >
+            <span class="sr-only">Close menu</span>
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="mt-6 flow-root">
+          <div class="-my-6 divide-y divide-gray-500/10">
+            <div class="space-y-2 p-4">
+              {
+                links.map(({ title, href }) => (
+                  <a class="nav-link mobile" href={"/" + href}>
+                    {title}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fine Solo Mobile -->
+  </div>
+</header>
+
+<style>
+  ul li {
+    display: inline;
+    list-style-type: none;
+  }
+
+  a.nav-link {
+    text-decoration: none;
+
+    background: linear-gradient(
+        to right,
+        rgba(100, 200, 200, 0),
+        rgba(100, 200, 200, 0)
+      ),
+      linear-gradient(to right, rgb(235, 94, 30), rgb(255, 177, 60));
+    background-size:
+      100% 2px,
+      0 2px;
+    background-position:
+      100% 100%,
+      0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 400ms;
+  }
+
+  .nav-link.desktop {
+    @apply text-sm font-semibold leading-6 text-gray-900;
+  }
+
+  .nav-link.mobile {
+    @apply -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50;
+  }
+
+  a.nav-link:hover,
+  a.nav-link.active {
+    background-size:
+      0 2px,
+      100% 2px;
+  }
+</style>
+
+<script>
+  document
+    .querySelector('[data-click="open-mobile-menu"]')
+    ?.addEventListener("click", () => {
+      document
+        .querySelector('[data-element="mobile-menu"]')
+        ?.classList.toggle("hidden");
+    });
+
+  document
+    .querySelector('[data-click="close-mobile-menu"]')
+    ?.addEventListener("click", () => {
+      document
+        .querySelector('[data-element="mobile-menu"]')
+        ?.classList.toggle("hidden");
+    });
+
+  // change background color from trasp to white on header elements after 80px
+  window.addEventListener("scroll", () => {
+    const header = document.querySelector("header");
+    if (window.scrollY > 80) {
+      header?.classList.add("bg-white", "border-gray-200");
+      header?.classList.remove("border-transparent");
+    } else {
+      header?.classList.remove("bg-white", "border-gray-200");
+      header?.classList.add("border-transparent");
+    }
+  });
+</script>

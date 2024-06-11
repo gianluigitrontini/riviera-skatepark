@@ -1,0 +1,159 @@
+---
+import ServizioInLista from "./ServizioInLista.astro";
+
+const nostri_servizi = [
+  {
+    titolo: "Progettazione e sviluppo software",
+    content:
+      "Creiamo software personalizzati che rispondono alle esigenze specifiche dei nostri clienti. Dall'analisi iniziale alla messa in opera, garantiamo soluzioni affidabili e performanti che ottimizzano i processi operativi e migliorano la qualità dei servizi.",
+    sizeClass: "lg:col-span-4",
+    bg_src:
+      "https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2023/06/person-at-computer.jpeg.jpg",
+  },
+  {
+    titolo: "Gestione sistemi ed hosting",
+    content:
+      "Offriamo servizi di gestione e hosting di sistemi IT, assicurando la massima efficienza e sicurezza dei dati. Il nostro team monitora costantemente le infrastrutture per garantire operatività continua e prestazioni ottimali.",
+    sizeClass: "lg:col-span-4",
+    bg_src: "https://protezionedatipersonali.it/images/sysadmin.jpg",
+  },
+  {
+    titolo: "Consulenza direzionale",
+    content:
+      "Forniamo consulenza strategica per aiutare le organizzazioni a definire piani di sviluppo e a prendere decisioni informate. Le nostre analisi approfondite e i nostri consigli esperti supportano la crescita sostenibile e l'innovazione.",
+    sizeClass: "lg:col-span-5",
+    bg_src: "https://www.marinteam.it/wp-content/uploads/2015/05/servizio6.jpg",
+  },
+  {
+    titolo: "Progettazione e gestione reti",
+    content:
+      "Progettiamo e gestiamo reti informatiche complesse, assicurando connettività affidabile e sicura. Le nostre soluzioni di rete sono pensate per sostenere le esigenze in continua evoluzione delle strutture sanitarie moderne.",
+    sizeClass: "lg:col-span-3",
+    bg_src:
+      "https://www.millenium-tech.it/wp-content/uploads/2021/02/reti-infomatiche.jpg-1024x490.png",
+  },
+  {
+    titolo: "Sicurezza informatica",
+    content:
+      "Implementiamo soluzioni avanzate di sicurezza informatica per proteggere i dati sensibili e garantire la compliance con le normative vigenti. Il nostro approccio proattivo previene minacce e vulnerabilità, mantenendo al sicuro le informazioni critiche.",
+    sizeClass: "lg:col-span-3",
+    bg_src:
+      "https://www.adempia.it/assets/contents/cybersecurity-regole-ue.jpg",
+  },
+  {
+    titolo: "Progettazione e sviluppo soluzioni App Mobile",
+    content:
+      "Sviluppiamo applicazioni mobili innovative che migliorano l'accesso ai servizi sanitari e facilitano la comunicazione tra pazienti e professionisti. Le nostre app sono user-friendly e progettate per rispondere alle esigenze di un settore in continua evoluzione.",
+    sizeClass: "lg:col-span-5",
+    bg_src:
+      "https://resources.cubix.co/wp-content/uploads/2024/01/5fcf7c9723c6c832936771.jpg",
+  },
+];
+
+const { showFullContent } = Astro.props;
+---
+
+<div class="container relative bg-transparent">
+  <div>
+    <!-- <div
+      class="flex flex-col items-center justify-center text-center w-full text-gray-700 mb-16"
+    >
+      <div class="font-light text-xl max-w-3xl">
+        <h4 class="font-medium text-2xl md:text-4xl text-center mb-4">
+          {
+            showFullContent ? (
+              <span>
+                Soluzioni Complete per la Gestione e l'Innovazione in Ambito
+                Sanitario
+              </span>
+            ) : (
+              <span> I nostri servizi</span>
+            )
+          }
+        </h4>
+        <p class="text-center">
+          Le soluzioni realizzate sono predisposte per rispondere alle diverse
+          esigenze della sanità pubblica e privata, a livello locale, regionale
+          e nazionale.
+        </p>
+      </div>
+    </div> -->
+
+    <!-- <div class="mx-auto mt-16">
+      <div class="grid grid-cols-8 gap-8">
+        {
+          nostri_servizi.map((servizio, i) => {
+            return showFullContent ? (
+              <ServizioInLista
+                servizio={servizio}
+                showFullContent={showFullContent}
+              />
+            ) : (
+              <a
+                href="/servizi"
+                class:list={["col-span-full", servizio.sizeClass]}
+              >
+                <ServizioInLista
+                  servizio={servizio}
+                  showFullContent={showFullContent}
+                />
+              </a>
+            );
+          })
+        }
+      </div>
+    </div> -->
+  </div>
+</div>
+
+<style>
+  /* .gradient-border {
+    @apply bg-neutral-100;
+    --borderWidth: 1px;
+    position: relative;
+    border-radius: calc(10 * var(--borderWidth));
+  }
+  .gradient-border:hover {
+    @apply shadow-default;
+  }
+  .gradient-border:after {
+    content: "";
+    position: absolute;
+    top: calc(-1 * var(--borderWidth));
+    left: calc(-1 * var(--borderWidth));
+    height: calc(100% + var(--borderWidth) * 2);
+    width: calc(100% + var(--borderWidth) * 2);
+    background: linear-gradient(
+      60deg,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad,
+      #07b39b,
+      #6fba82
+    );
+    border-radius: calc(11 * var(--borderWidth));
+    animation: animatedgradient 4s linear infinite;
+    background-size: 300% 300%;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .gradient-border:hover:after {
+    opacity: 0;
+  }
+
+  @keyframes animatedgradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  } */
+</style>

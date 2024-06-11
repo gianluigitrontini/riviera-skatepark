@@ -1,0 +1,45 @@
+---
+const { showFullContent, servizio } = Astro.props;
+---
+
+<div
+  class:list={[
+    `col-span-full ${servizio.sizeClass}`,
+    {
+      "border rounded-xl overflow-hidden lg:!col-span-4 cursor-default":
+        showFullContent,
+    },
+  ]}
+>
+  <div
+    class:list={[
+      "bento-element font-semibold flex flex-col justify-end text-xl text-neutral-800 gradient-border transition-all duration-700 h-[15rem] w-full rounded-xl",
+      { "rounded-t-none": showFullContent },
+    ]}
+    style={`background-image: url(${servizio.bg_src || "https://via.placeholder.com/1920x1080"}); background-size: cover; background-position: center; background-repeat: no-repeat;`}
+  >
+    <div class="with-background-gradient p-4">
+      <h3>{servizio.titolo}</h3>
+    </div>
+  </div>
+  {showFullContent && <p class="font-normal p-4">{servizio.content}</p>}
+</div>
+
+<style>
+  .bento-element {
+    @apply border border-neutral-100 overflow-hidden opacity-90;
+  }
+  .bento-element:hover {
+    @apply scale-[1.02] shadow-xl opacity-100;
+  }
+
+  .with-background-gradient {
+    @apply pt-20 text-white;
+
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(0, 0, 0, 0.45)
+    );
+  }
+</style>

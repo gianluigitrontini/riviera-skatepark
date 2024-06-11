@@ -1,0 +1,24 @@
+---
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import ServiziComponent from "../components/Servizi/ServiziComponent.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Riviera Skatepark | San Benedetto del Tronto">
+  <Header />
+  <main>
+    <Hero />
+    <ServiziComponent showFullContent={false} />
+  </main>
+</Layout>
+
+<style>
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+</style>
