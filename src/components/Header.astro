@@ -22,8 +22,19 @@ const links = [
 
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
+
+// close mobile menu after click on a link
 ---
 
+<!-- <script>
+  document.querySelectorAll("a.nav-link.mobile").forEach((link) => {
+    link.addEventListener("click", () => {
+      document
+        .querySelector('[data-element="mobile-menu"]')
+        ?.classList.toggle("hidden");
+    });
+  });
+</script> -->
 <header
   class="sticky top-0 z-50 transition-colors ease-in-out duration-500 border-b border-transparent"
 >
@@ -97,8 +108,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
       >
         <div class="flex items-center justify-between">
           <a href="#" class="-m-1.5 p-1.5">
-            <span class="sr-only">NBS s.r.l.</span>
-            <img src="/images/nbs_logo.png" class="max-w-16" alt="" />
+            <!-- <img src="/images/nbs_logo.png" class="max-w-16" alt="" /> -->
           </a>
 
           <button
@@ -106,7 +116,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
             type="button"
             class="-m-2.5 rounded-md p-2.5 text-gray-700"
           >
-            <span class="sr-only">Close menu</span>
+            <span class="sr-only">Chiudi</span>
             <svg
               class="h-6 w-6"
               fill="none"
@@ -128,7 +138,11 @@ const currentPath = pathname.slice(1); // remove the first "/"
             <div class="space-y-2 p-4">
               {
                 links.map(({ title, href }) => (
-                  <a class="nav-link mobile" href={"/" + href}>
+                  <a
+                    data-click="close-mobile-menu"
+                    class="nav-link mobile"
+                    href={"/" + href}
+                  >
                     {title}
                   </a>
                 ))
@@ -193,11 +207,13 @@ const currentPath = pathname.slice(1); // remove the first "/"
     });
 
   document
-    .querySelector('[data-click="close-mobile-menu"]')
-    ?.addEventListener("click", () => {
-      document
-        .querySelector('[data-element="mobile-menu"]')
-        ?.classList.toggle("hidden");
+    .querySelectorAll('[data-click="close-mobile-menu"]')
+    .forEach((link) => {
+      link.addEventListener("click", () => {
+        document
+          .querySelector('[data-element="mobile-menu"]')
+          ?.classList.toggle("hidden");
+      });
     });
 
   // change background color from trasp to white on header elements after 80px
