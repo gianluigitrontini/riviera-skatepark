@@ -3,16 +3,20 @@ import { Image } from "astro:assets";
 
 const links = [
   {
-    title: "Home",
-    href: "",
+    title: "Orari",
+    href: "#orari",
   },
   {
-    title: "Chi siamo",
-    href: "chi-siamo",
+    title: "Tesseramenti",
+    href: "#tesseramenti",
   },
   {
-    title: "Servizi",
-    href: "servizi",
+    title: "Corsi di Skate",
+    href: "#corsi-di-skate",
+  },
+  {
+    title: "Eventi",
+    href: "#eventi",
   },
 ];
 
@@ -29,7 +33,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
         <a href="/" class="-m-1.5 p-1.5">
           <span class="sr-only">Riviera Skatepark</span>
           <h1 class="font-bold tracking-widest uppercase">Riviera Skatepark</h1>
-<!-- 
+          <!-- 
           <Image
             loading="eager"
             width={120}

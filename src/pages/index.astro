@@ -1,7 +1,8 @@
 ---
+import Contatti from "../components/Contatti.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import ServiziComponent from "../components/Servizi/ServiziComponent.astro";
+import ListaBottoni from "../components/ListaBottoni.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -9,7 +10,57 @@ import Layout from "../layouts/Layout.astro";
   <Header />
   <main>
     <Hero />
-    <ServiziComponent showFullContent={false} />
+
+    <Contatti />
+
+    <ListaBottoni />
+
+    <section class="py-8">
+      <h1 class="text-2xl m-4" id="tesseramenti">
+        <span class="text-blue-500 font-bold">Tesseramenti</span> e <span
+          class="text-blue-500 font-bold">Ingressi</span
+        >
+      </h1>
+
+      <div
+        class="text-center grid grid-cols-1 md:grid-cols-3 divide-y md:divide-x md:divide-y-0"
+      >
+        <div class="p-4 flex flex-col justify-center">
+          <p>
+            Vuoi venirci a trovare per la <span
+              class="text-blue-500 font-medium">prima volta</span
+            >?
+          </p>
+          <p class="line-through opacity-50">Entra al costo di 2 euro</p>
+          <p>Per te <span class="font-bold">l'ingresso è gratuito</span>!</p>
+        </div>
+
+        <div class="p-4 flex flex-col justify-center">
+          <p>
+            Per i visitatori <span class="text-blue-500 font-medium"
+              >occasionali</span
+            >, la quota è di <span class="font-bold">€2/ingresso</span>
+          </p>
+        </div>
+
+        <div class="p-4 flex flex-col justify-center">
+          <p>
+            Per i <span class="text-blue-500 font-medium"
+              >frequentatori più assidui</span
+            >, è necessario tesserarsi all'associazione SBTSK8 al costo di <span
+              class="font-bold">€30/anno</span
+            >
+            (solo €2,50 al mese!)
+          </p>
+          <button
+            class="w-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white p-2 rounded-md mt-2"
+            >Scarica modulo di iscrizione</button
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- <ServiziComponent showFullContent={false} /> -->
   </main>
 </Layout>
 
